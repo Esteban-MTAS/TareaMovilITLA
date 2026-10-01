@@ -1,97 +1,93 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# TareaMovilITLA
 
-# Getting Started
+Aplicación académica de ITLA para la asignatura Introducción al Desarrollo de Aplicaciones Móviles. Desarrollada con React Native y TypeScript para Android.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Tecnologías
 
-## Step 1: Start Metro
+- React Native 0.87.1
+- React 19.2.3
+- TypeScript
+- Android, Gradle y Kotlin para la integración nativa
+- React Native WebView para el video de YouTube
+- Jest y React Test Renderer para las pruebas
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Funcionalidades
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- Página Inicial con fotografía y datos personales.
+- Sumadora con validación de entradas y botón para limpiar.
+- Conversor de números enteros del 1 al 1000 a letras en español, con rechazo de entradas vacías y fuera de rango.
+- Tabla de multiplicar desde el 1 hasta el 13.
+- Experiencia Personal con el video https://youtu.be/Me7Th-gGcdE.
+
+El conversor utiliza exclusivamente la lógica local desarrollada en `App.tsx`: no realiza peticiones HTTP ni utiliza APIs externas, servicios de OpenAI/Google o bibliotecas de conversión. Solo la reproducción del video requiere conexión a Internet.
+
+## Requisitos
+
+- Node.js 22.11.0 o superior y npm.
+- JDK 21.
+- Android Studio con Android SDK Platform 37, Build Tools 37.0.0 y NDK 27.1.12297006.
+- Un emulador Android o dispositivo con depuración USB (Android 7.0/API 24 o superior).
+- Configurar `JAVA_HOME` y `ANDROID_HOME`; agregar `platform-tools` al PATH.
+
+## Instalar dependencias
 
 ```sh
-# Using npm
+git clone https://github.com/Esteban-MTAS/TareaMovilITLA.git
+cd TareaMovilITLA
+npm ci
+```
+
+Si es necesario, crear `android/local.properties` con `sdk.dir` apuntando al SDK local. Ese archivo no se incluye en Git.
+
+## Ejecutar en Android
+
+En una terminal:
+
+```sh
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
+Con un emulador iniciado o dispositivo conectado, en otra terminal:
 
 ```sh
-# Using npm
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+Abrir la carpeta `android/` si se utiliza Android Studio.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## Compilar el APK
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+En Windows, desde la raíz:
+
+```powershell
+cd android
+.\gradlew.bat :app:assembleRelease
+```
+
+En macOS/Linux:
 
 ```sh
-bundle install
+cd android
+./gradlew :app:assembleRelease
 ```
 
-Then, and every time you update your native dependencies, run:
+El APK se genera en `android/app/build/outputs/apk/release/app-release.apk`. La configuración actual utiliza la firma de desarrollo estándar para la entrega académica; una publicación en una tienda requiere una firma propia.
+
+## Verificación
 
 ```sh
-bundle exec pod install
+npm test -- --runInBand
+npx tsc --noEmit
+npm run lint
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Las pruebas comprueban la suma 20 + 15, las conversiones 1, 15, 22, 48, 100, 101, 256, 500, 999 y 1000, el rechazo de 0, 1001 y campos vacíos, las trece filas de la tabla del 5 y el enlace del video en Experiencia Personal.
 
-```sh
-# Using npm
-npm run ios
+## Entrega
 
-# OR using Yarn
-yarn ios
-```
+- `entrega/qr-github.png`: enlace exacto a este repositorio.
+- `entrega/qr-youtube.png`: enlace exacto a https://youtu.be/Me7Th-gGcdE.
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+Los QR se generan como archivos PNG y se validan mediante lectura de sus contenidos.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Se excluyen de Git las dependencias, cachés, compilaciones, configuración local del IDE y archivos de secretos. La aplicación React Native utiliza el proyecto nativo ubicado en `android/`.

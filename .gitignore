@@ -73,3 +73,28 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Local files and secrets
+.vscode/
+.env
+.env.*
+!.env.example
+*.jks
+*.p12
+*.pem
+*.key
+*.log
+*.tmp
+*.swp
+*.apk
+*.aab
+
+# Unused standalone Android Studio template (React Native uses android/)
+/app/
+/gradle/
+/gradlew
+/gradlew.bat
+/build.gradle.kts
+/settings.gradle.kts
+/gradle.properties
+/work/
