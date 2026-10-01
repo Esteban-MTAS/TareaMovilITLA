@@ -29,56 +29,7 @@ El conversor utiliza exclusivamente la lógica local desarrollada en `App.tsx`: 
 - Un emulador Android o dispositivo con depuración USB (Android 7.0/API 24 o superior).
 - Configurar `JAVA_HOME` y `ANDROID_HOME`; agregar `platform-tools` al PATH.
 
-## Instalar dependencias
 
-```sh
-git clone https://github.com/Esteban-MTAS/TareaMovilITLA.git
-cd TareaMovilITLA
-npm ci
-```
-
-Si es necesario, crear `android/local.properties` con `sdk.dir` apuntando al SDK local. Ese archivo no se incluye en Git.
-
-## Ejecutar en Android
-
-En una terminal:
-
-```sh
-npm start
-```
-
-Con un emulador iniciado o dispositivo conectado, en otra terminal:
-
-```sh
-npm run android
-```
-
-Abrir la carpeta `android/` si se utiliza Android Studio.
-
-## Compilar el APK
-
-En Windows, desde la raíz:
-
-```powershell
-cd android
-.\gradlew.bat :app:assembleRelease
-```
-
-En macOS/Linux:
-
-```sh
-cd android
-./gradlew :app:assembleRelease
-```
-
-El APK se genera en `android/app/build/outputs/apk/release/app-release.apk`. La configuración actual utiliza la firma de desarrollo estándar para la entrega académica; una publicación en una tienda requiere una firma propia.
-
-## Verificación
-
-```sh
-npm test -- --runInBand
-npx tsc --noEmit
-npm run lint
 ```
 
 Las pruebas comprueban la suma 20 + 15, las conversiones 1, 15, 22, 48, 100, 101, 256, 500, 999 y 1000, el rechazo de 0, 1001 y campos vacíos, las trece filas de la tabla del 5 y el enlace del video en Experiencia Personal.
